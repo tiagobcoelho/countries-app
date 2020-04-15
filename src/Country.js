@@ -31,6 +31,15 @@ class Country extends Component {
       this.setState({selectedCountry : value})
   }
 
+  removeCountry =(name) => {
+    const cntr = this.state.countries.filter( country => 
+      country.name !== name
+    )
+    this.setState({ 
+        countries: cntr,
+        selectedCountry: "Please choose a country"  });
+  };
+
   render(){
     const countries = this.state.countries
     const optionItems = countries.map((country) => 
@@ -56,7 +65,8 @@ class Country extends Component {
                 flag ={country.flag}
                 timezone={country.timezones}
                 region={country.region}
-                subregion={country.subregion}/>
+                subregion={country.subregion}
+                removeCountry={this.removeCountry}/>
             ))
             :
             <div className="select"><h2>select a country</h2></div>

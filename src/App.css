@@ -29,6 +29,7 @@ select{
 
 .select,
 .card{
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,6 +52,23 @@ select{
   font-family: roboto;
   text-transform: uppercase;
   font-size: 2em;
+}
+
+.delete{
+  font-size: 2em;
+  position: absolute;
+  top: 20px;
+  right:20px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  color: hsl(216, 6%, 26%);
+}
+
+.delete:hover{
+  transform: scale(1.2);
+  color: hsl(216, 6%, 46%);
 }
 
 .card img{

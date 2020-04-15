@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
+import { TiDelete } from 'react-icons/ti';
 
 class CountryInfo extends Component{
+
+    removeCountry =(event) => {
+        this.props.removeCountry(this.props.name)
+        
+      };
     
 
     render(){
         const { name, capital, languages, population, area, currency, flag, timezone, region, subregion } = this.props
         return(
             <div className="card">
+                <TiDelete onClick={this.removeCountry} className='icon delete'/>
                 <img src={flag} alt={`${name} flag`}/>
                 <p><span>NAME:</span> {name}</p>
                 <p><span>CAPITAL:</span> {capital !== ""? capital: "N/A"}</p>
