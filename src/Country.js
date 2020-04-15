@@ -41,8 +41,8 @@ class Country extends Component {
   };
 
   render(){
-    const countries = this.state.countries
-    const optionItems = countries.map((country) => 
+    const { countries, selectedCountry } = this.state
+    const optionItems = countries.map( country => 
     <option key={country.alpha3Code} value={country.name}>{country.name}</option>
     )
     return(
@@ -51,8 +51,8 @@ class Country extends Component {
               {optionItems}
           </select>
         
-          {this.state.selectedCountry !== "Please choose a country"? 
-          countries.filter(country => country.name === this.state.selectedCountry)
+          {selectedCountry !== "Please choose a country"? 
+          countries.filter(country => country.name === selectedCountry)
             .map(country => (
               <CountryInfo
                 key={country.alpha3Code}

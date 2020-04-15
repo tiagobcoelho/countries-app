@@ -1,20 +1,32 @@
 import React, { Component } from 'react';
 import './App.css';
 import { TiDelete } from 'react-icons/ti';
+import Modal from './Modal';
 
 class CountryInfo extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            displayModal: false,
+        }
+    }
 
     removeCountry =(event) => {
         this.props.removeCountry(this.props.name)
-        
       };
+
+    showModal = (event) => {
+        event.preventDefault();
+        this.setState({displayModal: !this.state.displayModal})
+    }
     
 
     render(){
         const { name, capital, languages, population, area, currency, flag, timezone, region, subregion } = this.props
         return(
             <div className="card">
-                <TiDelete onClick={this.removeCountry} className='icon delete'/>
+                {this.state.displayModal && <Modal removeCountry={this.removeCountry} showModal={this.showModal} name={name}/>}
+                <TiDelete onClick={this.showModal} className='icon delete'/>
                 <img src={flag} alt={`${name} flag`}/>
                 <p><span>NAME:</span> {name}</p>
                 <p><span>CAPITAL:</span> {capital !== ""? capital: "N/A"}</p>

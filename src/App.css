@@ -7,6 +7,8 @@ body{
   
 }
 
+/****** SELECT INPUT ******/
+
 select{
   display: block;
   text-align: center;
@@ -26,6 +28,8 @@ select{
     hsl(216, 6%, 5%) -4px -4px 8px;;
 
 }
+
+/****** COUNTRY INFO CARD ******/
 
 .select,
 .card{
@@ -99,4 +103,50 @@ p{
 
 img{
   max-width: 300px;
+}
+
+/****** MODAL ******/
+
+.modal{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width: 70%;
+  background-color: hsl(216, 6%, 26%);
+  padding: 30px;
+  border: 2px solid hsl(216, 6%, 26%);
+  border-radius: 5px;
+  box-shadow: hsl(216, 6%, 10%) 3px 3px 6px
+}
+
+.modal p{
+  font-family: roboto;
+  font-weight: 600;
+  color: hsl(216, 6%, 16%);
+}
+
+.modal button{
+  margin: 10px 40px;
+  padding: 12px 40px;
+  background-color: hsl(216, 6%, 26%);
+  color: hsl(216, 6%, 16%);
+  font-family: roboto;
+  font-weight: 600;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  box-shadow:
+  hsl(216, 6%, 26%) 0px 0px 2px 2px,
+  hsl(216, 6%, 10%) 3px 3px 6px,
+  hsl(216, 6%, 40%) -3px -3px 6px;
+  transform: scale(1.1);
+  transition: all .3s ease-in-out;
+}
+
+.modal button:hover{
+  transform: scale(1.2);
 }
