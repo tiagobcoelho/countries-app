@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import { TiDelete } from 'react-icons/ti';
 import Modal from './Modal';
 import EditCountry from './EditCountry';
@@ -34,7 +33,7 @@ class CountryInfo extends Component{
     
 
     render(){
-        const { numericCode, id, name, capital, languages, population, area, currencies, flag, timezones, region, subregion } = this.props
+        const { name, capital, languages, population, area, currencies, flag, timezones, region, subregion } = this.props
         return(
             <div>
                 {!this.state.editMode?
@@ -49,14 +48,12 @@ class CountryInfo extends Component{
                 <p><span>POPULATION:</span> {population !== ""? population: "N/A"}</p>
                 <p><span>AREA:</span> {area !== ""? `${area} square metres` : "N/A"}</p>
                 <p><span>CURRENCY:</span> {currencies !== ""? currencies: "N/A"}</p>
-                <p><span>TIMEZONE:</span> {timezones !== ""? timezones.length >1 ? timezones.join("/ "): timezones : "N/A"}</p>
+                <p><span>TIMEZONE:</span> {timezones.length >1 ? timezones.join("/ "): timezones}</p>
                 <p><span>REGION:</span> {region !== ""? region: "N/A"}</p>
                 <p><span>SUBREGION:</span> {subregion !== ""? subregion: "N/A"}</p>
             </div>
             :
             <EditCountry 
-                    numericCode={numericCode}
-                    id={id}
                     name={name}
                     capital={capital}
                     languages={languages}

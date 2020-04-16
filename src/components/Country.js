@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './App.css';
 import CountryInfo from './CountryInfo';
+import AddCountry from './AddCountry';
+
+function compare(a, b) {
+  // Use toUpperCase() to ignore character casing
+  const countryA = a.name.toUpperCase();
+  const countryB = b.name.toUpperCase();
+
+  let comparison = 0;
+  if (countryA > countryB) {
+    comparison = 1;
+  } else if (countryA < countryB) {
+    comparison = -1;
+  }
+  return comparison;
+}
 
 
 class Country extends Component {
@@ -47,10 +61,20 @@ class Country extends Component {
     this.setState({ countries : newCountries})
   }
 
+  addCountry = (country) => {
+    const currentCountries = [...this.state.countries]
+    const first = currentCountries.filter(country => country.name === "Please choose a country");
+    const newCountries = [country,...currentCountries.filter(country => country.name !== "Please choose a country")];
+    newCountries.sort(compare)
+    this.setState({ 
+      countries : [first[0],...newCountries],
+      selectedCountry: country.name})
+  }
+
   render(){
     const { countries, selectedCountry } = this.state
     const optionItems = countries.map( country => 
-    <option key={country.numericCode} value={country.name}>{country.name}</option>
+    <option key={country.name} value={country.name}>{country.name}</option>
     )
     return(
         <div>
@@ -63,7 +87,6 @@ class Country extends Component {
             .map(country => (
               <CountryInfo
                 key={country.numericCode}
-                numericCode={country.numericCode}
                 name={country.name}
                 capital={country.capital}
                 languages={country.languages[0].name}
@@ -80,6 +103,8 @@ class Country extends Component {
             :
             <div className="select"><h2>select a country</h2></div>
             }
+          <AddCountry 
+            addCountry={this.addCountry}/>  
           
             
         </div>

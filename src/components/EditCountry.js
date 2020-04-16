@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
 
-function validate (name, capital, languages, population, area, currencies, timezones, region, subregion) {
+function validate ( capital, languages, population, area, currencies, timezones, region, subregion) {
     return{
-        name: name.length === 0,
         capital: capital.length === 0,
         languages: languages.length === 0,
         population: population.length === 0,
@@ -19,8 +17,6 @@ class EditCountry extends Component{
     constructor(props){
         super(props);
         this.state = {
-            numericCode:this.props.numericCode,
-            id: this.props.id,
             name: this.props.name,
             capital:this.props.capital,
             languages:[{
@@ -32,7 +28,7 @@ class EditCountry extends Component{
                 name: this.props.currencies
             }],
             flag:this.props.flag,
-            timezones: this.props.timezones,
+            timezones: [this.props.timezones],
             region:this.props.region,
             subregion: this.props.subregion,
 
@@ -55,6 +51,10 @@ class EditCountry extends Component{
                     name: value,
                 }]
             })
+        }else if(name === 'timezones'){
+            this.setState({
+                timezones: [value]
+            })
         }else{
             this.setState({
             [name]: value,
@@ -71,7 +71,7 @@ class EditCountry extends Component{
 
     render(){
         const { name, capital, languages, population, area, currencies, timezones,flag, region, subregion } = this.state
-        const errors = validate (name, capital, languages, population, area, currencies, timezones, region, subregion)
+        const errors = validate (capital, languages, population, area, currencies, timezones, region, subregion)
         let isDisabled = Object.keys(errors).some(x => errors[x]);
         return(
             <form className="country-info-form" onSubmit={this.handleSubmit}>
@@ -93,8 +93,8 @@ class EditCountry extends Component{
                 <label for="currency">Currency:</label>
                 <input type="text" value={currencies[0].name} onChange={this.handleChange} placeholder="Currency" className="form-input" id="currency" name='currency' />
 
-                <label for="timezone">Timezone:</label>
-                <input type="text" value={timezones} onChange={this.handleChange} placeholder="Timezone" className="form-input"  id="timezone" name='timezone' />
+                <label for="timezones">Timezone:</label>
+                <input type="text" value={timezones} onChange={this.handleChange} placeholder="Timezone" className="form-input"  id="timezones" name='timezones' />
 
                 <label for="region">Region:</label>
                 <input type="text" value={region} onChange={this.handleChange} placeholder="Region" className="form-input" id="region" name='region' />

@@ -165,8 +165,45 @@ p{
 
 /****** EDIT COUNTRY INFO FORM ******/
 
+.add-country-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.show-add-country{
+  margin: 10px 0 30px 0;
+  padding: 12px 40px;
+  background-color: hsl(216, 6%, 16%);
+  color:hsl(216, 6%, 26%) ;
+  align-self: center;
+  font-family: roboto;
+  font-weight: 600;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 
+    hsl(216, 6%, 16%) 0px 0px 3px 3px,
+    hsl(216, 6%, 26%) 6px 6px 10px,
+    hsl(216, 6%, 5%) -6px -6px 10px;
+  transform: scale(1.1);
+  transition: all .3s ease-in-out;
+}
+
+.show-add-country:hover{
+  transform: scale(1.2);
+}
+
 .country-info-form{
   height: auto;
+}
+
+.country-info-form h2{
+  font-family: roboto;
+    font-size: 1.5em;
+    color: hsl(216, 6%, 26%);
 }
 
 .country-info-form p{
