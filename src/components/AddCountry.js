@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TiDelete } from 'react-icons/ti';
 
 function validate (name, capital, languages, population, area, currencies, timezones,flag, region, subregion) {
     return{
@@ -88,7 +89,7 @@ class AddCountry extends Component{
 
     showAddCountry = (event) => {
         event.preventDefault();
-        this.setState({addCountryDisplay: false})
+        this.setState({addCountryDisplay: !this.state.addCountryDisplay})
     }
 
     render(){
@@ -101,6 +102,7 @@ class AddCountry extends Component{
                 <button className="show-add-country" onClick={this.showAddCountry}>Add New Country</button>
                 :
                 <form className="country-info-form" onSubmit={this.handleSubmit}>
+                    <TiDelete onClick={this.showAddCountry} className='icon delete'/>
 
                     <h2>Add New Country</h2>
 
