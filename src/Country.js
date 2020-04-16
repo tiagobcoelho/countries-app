@@ -22,7 +22,7 @@ class Country extends Component {
         initialCountries = countryData.map(country => {
           return country
         });
-        this.setState({countries : [{name: "Please choose a country", alpha3Code:"default"},...initialCountries] })
+        this.setState({countries : [{name: "Please choose a country", numericCode:"default"},...initialCountries] })
       }) 
   }
 
@@ -40,10 +40,17 @@ class Country extends Component {
         selectedCountry: "Please choose a country"  });
   };
 
+  updateCountry = (country) => {
+    const newCountries = [...this.state.countries];
+    const i = newCountries.findIndex(cntr => country.name === cntr.name);
+    newCountries.splice(i,1,country);
+    this.setState({ countries : newCountries})
+  }
+
   render(){
     const { countries, selectedCountry } = this.state
     const optionItems = countries.map( country => 
-    <option key={country.alpha3Code} value={country.name}>{country.name}</option>
+    <option key={country.numericCode} value={country.name}>{country.name}</option>
     )
     return(
         <div>
@@ -55,18 +62,20 @@ class Country extends Component {
           countries.filter(country => country.name === selectedCountry)
             .map(country => (
               <CountryInfo
-                key={country.alpha3Code}
+                key={country.numericCode}
+                numericCode={country.numericCode}
                 name={country.name}
                 capital={country.capital}
                 languages={country.languages[0].name}
                 population={country.population}
                 area={country.area}
-                currency={country.currencies[0].name}
+                currencies={country.currencies[0].name}
                 flag ={country.flag}
-                timezone={country.timezones}
+                timezones={country.timezones}
                 region={country.region}
                 subregion={country.subregion}
-                removeCountry={this.removeCountry}/>
+                removeCountry={this.removeCountry}
+                updateCountry={this.updateCountry}/>
             ))
             :
             <div className="select"><h2>select a country</h2></div>

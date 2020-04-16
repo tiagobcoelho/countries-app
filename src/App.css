@@ -32,7 +32,8 @@ select{
 /****** COUNTRY INFO CARD ******/
 
 .select,
-.card{
+.card,
+.country-info-form{
   position: relative;
   display: flex;
   flex-direction: column;
@@ -75,6 +76,21 @@ select{
   color: hsl(216, 6%, 46%);
 }
 
+.edit{
+  font-size: 1.4em;
+  position: absolute;
+  top: 20px;
+  left:20px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  color: hsl(216, 6%, 26%)
+}
+
+.edit:hover{
+  transform: scale(1.2);
+  color: hsl(216, 6%, 46%);
+}
+
 .card img{
   max-width: 300px;
   margin-bottom: 20px;
@@ -99,10 +115,6 @@ p{
 .card h2{
   color: hsl(216, 6%, 26%);
   font-family: roboto;
-}
-
-img{
-  max-width: 300px;
 }
 
 /****** MODAL ******/
@@ -149,4 +161,104 @@ img{
 
 .modal button:hover{
   transform: scale(1.2);
+}
+
+/****** EDIT COUNTRY INFO FORM ******/
+
+.country-info-form{
+  height: auto;
+}
+
+.country-info-form p{
+  font-family: roboto;
+  color: hsl(216, 6%, 26%);
+}
+
+.country-info-form p span{
+  color: hsl(216, 6%, 26%);
+  font-family: roboto;
+  font-weight: 600;
+}
+
+
+.country-info-form img{
+  max-width: 300px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+.form-input{
+  width: 80%;
+  margin: 15px 0;
+  background-color:hsl(216, 6%, 16%);
+  color: hsl(216, 6%, 26%);
+  border: none;
+  font-size: 1.3em;
+  border-radius: 10px;
+  outline: none;
+  padding: 10px 10px;
+  box-shadow: 
+    hsl(216, 6%, 16%) 0px 0px 3px 3px,
+    hsl(216, 6%, 26%) 6px 6px 10px,
+    hsl(216, 6%, 5%) -6px -6px 10px;
+  transition: .2s ease-in-out;
+}
+.form-input:focus{
+  transform: scale(1.1);
+}
+
+.form-input::placeholder{
+  color: hsl(216, 6%, 26%);
+}
+
+.country-info-form label{
+  color: hsl(216, 6%, 26%);
+  width: 80%;
+  font-family: roboto;
+  font-size: 1.3em;
+  font-weight: 600;
+  text-align: left;
+}
+
+.btn-enabled{
+  margin: 20px 0 0 0;
+  padding: 12px 40px;
+  background-color: hsl(216, 6%, 16%);
+  color:hsl(216, 6%, 26%) ;
+  font-family: roboto;
+  font-weight: 600;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 
+    hsl(216, 6%, 16%) 0px 0px 3px 3px,
+    hsl(216, 6%, 26%) 6px 6px 10px,
+    hsl(216, 6%, 5%) -6px -6px 10px;
+  transform: scale(1.1);
+  transition: all .3s ease-in-out;
+}
+
+.btn-enabled:hover{
+  transform: scale(1.2);
+}
+
+.btn-disabled{
+  padding: 12px 40px;
+  margin: 20px 0 0 0;
+  background-color: hsl(216, 6%, 16%);
+  border-radius: 10px;
+  color:hsl(216, 6%, 16%) ;
+  font-family: roboto;
+  font-weight: 600;
+  font-size: 1.1em;
+  outline: none;
+  border: none;
+  box-shadow: 
+    hsl(216, 6%, 16%) 0px 0px 3px 3px,
+    hsl(216, 6%, 26%) 6px 6px 10px,
+    hsl(216, 6%, 5%) -6px -6px 10px;
+  transition: all .3s ease-in-out;
 }
